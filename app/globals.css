@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f7f4ee;
   --foreground: #171717;
 }
 
@@ -12,15 +12,301 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #f0c66b;
+  color: #111111;
+}
+
+.hero-surface {
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.geo-particle {
+  animation: float-geometry 18s ease-in-out infinite alternate;
+  border: 1px solid rgba(240, 198, 107, 0.42);
+  display: block;
+  opacity: 0.58;
+  position: absolute;
+  transform: rotate(0deg);
+}
+
+.geo-particle::before {
+  background: rgba(255, 255, 255, 0.14);
+  content: "";
+  inset: 3px;
+  position: absolute;
+}
+
+.geo-particle-1 {
+  border-radius: 999px;
+  height: 52px;
+  right: 18%;
+  top: 16%;
+  width: 52px;
+}
+
+.geo-particle-2 {
+  animation-delay: -4s;
+  border-color: rgba(255, 255, 255, 0.28);
+  height: 22px;
+  right: 43%;
+  top: 28%;
+  transform: rotate(18deg);
+  width: 72px;
+}
+
+.geo-particle-3 {
+  animation-delay: -7s;
+  border-color: rgba(240, 198, 107, 0.55);
+  height: 34px;
+  right: 10%;
+  top: 42%;
+  transform: rotate(-24deg);
+  width: 34px;
+}
+
+.geo-particle-4 {
+  animation-delay: -10s;
+  border-radius: 999px;
+  border-color: rgba(255, 255, 255, 0.24);
+  height: 18px;
+  right: 55%;
+  top: 60%;
+  width: 18px;
+}
+
+.geo-particle-5 {
+  animation-delay: -13s;
+  border-color: rgba(240, 198, 107, 0.5);
+  height: 70px;
+  right: 24%;
+  top: 72%;
+  transform: rotate(12deg);
+  width: 70px;
+}
+
+.geo-particle-6 {
+  animation-delay: -2s;
+  border-color: rgba(255, 255, 255, 0.2);
+  height: 16px;
+  right: 68%;
+  top: 22%;
+  transform: rotate(42deg);
+  width: 16px;
+}
+
+.geo-particle-7 {
+  animation-delay: -16s;
+  border-radius: 999px;
+  border-color: rgba(240, 198, 107, 0.5);
+  height: 30px;
+  right: 34%;
+  top: 10%;
+  width: 30px;
+}
+
+.geo-particle-8 {
+  animation-delay: -6s;
+  border-color: rgba(255, 255, 255, 0.22);
+  height: 14px;
+  right: 8%;
+  top: 68%;
+  transform: rotate(-8deg);
+  width: 92px;
+}
+
+.geo-particle-9 {
+  animation-delay: -11s;
+  border-radius: 999px;
+  border-color: rgba(240, 198, 107, 0.4);
+  height: 22px;
+  right: 48%;
+  top: 78%;
+  width: 22px;
+}
+
+.fade-up {
+  animation: fade-up 700ms ease both;
+}
+
+.fade-up-delay-1 {
+  animation: fade-up 700ms ease 120ms both;
+}
+
+.fade-up-delay-2 {
+  animation: fade-up 700ms ease 220ms both;
+}
+
+.section-reveal {
+  animation: section-reveal both;
+  animation-range: entry 8% cover 28%;
+  animation-timeline: view();
+}
+
+.slide-in-right {
+  animation: slide-in-right 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.panel-reveal {
+  animation: panel-reveal 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.professional-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease;
+}
+
+.professional-card::before {
+  background: linear-gradient(90deg, #111111, #f0c66b);
+  content: "";
+  height: 3px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+  width: 100%;
+}
+
+.professional-card:hover {
+  border-color: rgba(17, 17, 17, 0.22);
+  box-shadow: 0 24px 60px rgba(17, 17, 17, 0.1);
+  transform: translateY(-6px);
+}
+
+.professional-card:hover::before {
+  transform: scaleX(1);
+}
+
+.magnetic-link {
+  position: relative;
+}
+
+.magnetic-link::after {
+  background: currentColor;
+  bottom: -8px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 180ms ease;
+  width: 100%;
+}
+
+.magnetic-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.soft-shine {
+  overflow: hidden;
+  position: relative;
+}
+
+.soft-shine::after {
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.34) 45%,
+    transparent 70%
+  );
+  content: "";
+  height: 100%;
+  left: -140%;
+  position: absolute;
+  top: 0;
+  transform: skewX(-20deg);
+  transition: left 500ms ease;
+  width: 70%;
+}
+
+.soft-shine:hover::after {
+  left: 130%;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes panel-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float-geometry {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(var(--start-rotation, 0deg));
+  }
+  50% {
+    transform: translate3d(-18px, 14px, 0) rotate(18deg);
+  }
+  100% {
+    transform: translate3d(14px, -20px, 0) rotate(-12deg);
+  }
+}
+
+@keyframes section-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }
