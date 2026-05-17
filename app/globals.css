@@ -245,6 +245,50 @@ html {
   left: 130%;
 }
 
+.hero-photo-float {
+  animation: hero-photo-float 6.5s ease-in-out infinite;
+}
+
+.hero-photo-image {
+  filter:
+    drop-shadow(0 26px 34px rgba(15, 23, 42, 0.28))
+    drop-shadow(0 0 28px rgba(191, 219, 254, 0.32));
+  transition:
+    filter 260ms ease,
+    transform 260ms ease;
+  will-change: filter, transform;
+}
+
+.hero-photo-float:hover .hero-photo-image {
+  filter:
+    drop-shadow(0 34px 44px rgba(15, 23, 42, 0.34))
+    drop-shadow(0 0 38px rgba(191, 219, 254, 0.42));
+  transform: translateY(-8px) scale(1.02);
+}
+
+.certificate-issuer,
+.certificate-title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.certificate-issuer {
+  -webkit-line-clamp: 1;
+}
+
+.certificate-title {
+  -webkit-line-clamp: 2;
+}
+
+.certificate-summary {
+  list-style: none;
+}
+
+.certificate-summary::-webkit-details-marker {
+  display: none;
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -253,6 +297,16 @@ html {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes hero-photo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
