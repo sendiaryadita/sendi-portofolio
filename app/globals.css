@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+
+@source "./";
 
 :root {
   --background: #f7f4ee;
@@ -245,6 +247,56 @@ html {
   left: 130%;
 }
 
+.hero-name {
+  background: linear-gradient(105deg, #050505 0%, #111111 58%, #3f3f3f 82%, #7a5b12 100%);
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  font-size: clamp(2.7rem, 5.8vw, 5rem);
+  line-height: 0.96;
+  max-width: 100%;
+  padding-bottom: 0.16em;
+  position: relative;
+  transition:
+    filter 220ms ease,
+    transform 220ms ease;
+  white-space: nowrap;
+  -webkit-background-clip: text;
+}
+
+.hero-name::after {
+  animation: hero-name-underline 700ms ease 520ms both;
+  background: linear-gradient(90deg, #111111, #f0c66b, #2563eb);
+  bottom: 0;
+  content: "";
+  height: 4px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0.36);
+  transform-origin: left;
+  transition: transform 260ms ease;
+  width: 100%;
+}
+
+.hero-name:hover {
+  filter: drop-shadow(0 12px 22px rgba(122, 91, 18, 0.16));
+  transform: translateY(-2px);
+}
+
+.hero-name:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: clamp(2.25rem, 10.6vw, 2.7rem);
+  }
+
+  .hero-name::after {
+    height: 3px;
+  }
+}
+
 .hero-photo-float {
   animation: hero-photo-float 6.5s ease-in-out infinite;
 }
@@ -307,6 +359,15 @@ html {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-name-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(0.36);
   }
 }
 

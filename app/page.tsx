@@ -10,6 +10,17 @@ import {
   SiLaravel,
   SiReact,
 } from "react-icons/si";
+import {
+  HeroAnchor,
+  HeroDiv,
+  HeroH1,
+  HeroP,
+  ScrollReveal,
+  StaggerAnchor,
+  StaggerArticle,
+  StaggerDiv,
+  StaggerGroup,
+} from "./animated";
 
 const skills = [
   { name: "HTML", Icon: SiHtml5, iconClassName: "text-[#e34f26]", level: "Intermediate" },
@@ -43,25 +54,52 @@ const skills = [
 
 const projects = [
   {
-    title: "Website Portofolio Pribadi",
+    title: "DayaDesa",
+    category: "Web GIS Platform",
+    status: "Featured Project",
     description:
-      "Website personal untuk memperkenalkan profil, keahlian, proyek, dan kontak profesional.",
+      "Sistem informasi geospasial ketahanan energi desa untuk menampilkan data desa, peta energi, dan Energy Security Index.",
+    stack: ["Django", "Bootstrap", "Leaflet", "PostgreSQL"],
+  },
+  {
+    title: "Smart Parking System",
+    category: "Python Application",
+    status: "College Project",
+    description:
+      "Sistem simulasi parkir berbasis Python dengan konsep OOP, validasi input, subclass kendaraan, dan manajemen slot parkir.",
+    stack: ["Python", "OOP", "CLI"],
+  },
+  {
+    title: "Wi-Fi Network Optimization",
+    category: "Network Analysis",
+    status: "Research Project",
+    description:
+      "Analisis dan optimasi jaringan Wi-Fi kampus berdasarkan SSID, RSSI, channel, dan performa koneksi.",
+    stack: ["Wi-Fi Analyzer", "Network Analysis", "Documentation"],
+  },
+  {
+    title: "Cisco Network Topology",
+    category: "Computer Network",
+    status: "Lab Project",
+    description:
+      "Perancangan topologi jaringan menggunakan Cisco Packet Tracer dengan subnetting, routing, switch, router, dan PC client.",
+    stack: ["Cisco Packet Tracer", "Subnetting", "Routing"],
+  },
+  {
+    title: "Personal Portfolio Website",
+    category: "Web Development",
+    status: "In Progress",
+    description:
+      "Website portofolio pribadi untuk menampilkan profil, skill, sertifikat, project, dan kontak profesional.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    status: "In progress",
   },
   {
-    title: "Aplikasi Manajemen Data",
+    title: "IoT Sensor Concept",
+    category: "Internet of Things",
+    status: "Concept Project",
     description:
-      "Konsep aplikasi CRUD untuk membantu pencatatan data agar lebih terstruktur, cepat dicari, dan mudah dikelola.",
-    stack: ["Laravel", "MySQL", "REST API"],
-    status: "Project concept",
-  },
-  {
-    title: "Eksplorasi Backend Django",
-    description:
-      "Latihan membangun struktur backend, routing, model data, dan endpoint sederhana untuk kebutuhan aplikasi web.",
-    stack: ["Django", "Python", "SQLite"],
-    status: "Learning log",
+      "Konsep pengembangan sensor IoT untuk membaca kondisi lingkungan secara otomatis dan real-time.",
+    stack: ["IoT", "Sensor", "Automation"],
   },
 ];
 
@@ -228,6 +266,10 @@ const socialLinks = [
   },
 ];
 
+const githubProfile =
+  socialLinks.find((social) => social.label === "GitHub")?.href ??
+  "https://github.com/sendiaryadita";
+
 function SocialIcon({ name }: { name: string }) {
   if (name === "github") {
     return (
@@ -288,7 +330,7 @@ function CertificateCard({
   const hasMultiplePages = certificate.images.length > 1;
 
   return (
-    <article className="professional-card group flex min-h-[340px] flex-col border border-black/10 bg-white p-3 shadow-sm">
+    <StaggerArticle className="professional-card group flex min-h-[340px] flex-col border border-black/10 bg-white p-3 shadow-sm">
       <a
         href={firstImage.src}
         target="_blank"
@@ -353,7 +395,7 @@ function CertificateCard({
           </div>
         </div>
       </div>
-    </article>
+    </StaggerArticle>
   );
 }
 
@@ -396,23 +438,46 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto grid min-h-[680px] max-w-7xl gap-10 px-6 pb-12 pt-8 sm:px-10 md:min-h-[calc(100vh-92px)] md:grid-cols-[0.92fr_1.08fr] md:items-center md:pb-16 md:pt-4 lg:px-12">
           <div className="max-w-[620px] self-center">
-            <p className="fade-up inline-flex border border-black/12 bg-white/60 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#7a5b12]">
+            <HeroP
+              className="inline-flex border border-black/12 bg-white/60 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-[#7a5b12]"
+              delay={0.02}
+              direction="left"
+            >
               Portofolio Mahasiswa TI
-            </p>
-            <p className="fade-up mt-8 text-2xl font-bold sm:text-3xl">Hi, I am</p>
-            <h1 className="fade-up-delay-1 mt-5 max-w-xl text-5xl font-black leading-[0.96] text-[#050505] sm:text-6xl lg:text-[82px]">
+            </HeroP>
+            <HeroP
+              className="mt-7 text-2xl font-bold sm:text-3xl"
+              delay={0.12}
+              direction="left"
+            >
+              Hi, I am
+            </HeroP>
+            <HeroH1 className="hero-name mt-4 font-black" delay={0.24}>
               Sendi Aryadita
-            </h1>
-            <p className="fade-up-delay-2 mt-6 text-xl font-bold text-[#7a5b12] sm:text-2xl">
+            </HeroH1>
+            <HeroDiv
+              className="mt-4 inline-flex border border-black/12 bg-white/55 px-3.5 py-2 text-[11px] font-black uppercase text-black/58 shadow-sm"
+              delay={0.38}
+            >
+              Web Development <span className="mx-2 text-[#7a5b12]">•</span>{" "}
+              Backend <span className="mx-2 text-[#2563eb]">•</span> Network
+            </HeroDiv>
+            <HeroP
+              className="mt-4 text-xl font-bold text-[#7a5b12] sm:text-2xl"
+              delay={0.48}
+            >
               Teknologi Informasi
-            </p>
-            <p className="fade-up-delay-2 mt-3 max-w-xl text-base font-semibold leading-8 text-black/58 sm:text-lg">
+            </HeroP>
+            <HeroP
+              className="mt-3 max-w-xl text-base font-semibold leading-8 text-black/58 sm:text-lg"
+              delay={0.56}
+            >
               Program Studi Teknologi Rekayasa Internet. Fokus pada pengembangan
               web, backend, jaringan komputer, dan implementasi antarmuka yang
               rapi.
-            </p>
+            </HeroP>
 
-            <div className="fade-up-delay-2 mt-8 flex flex-wrap gap-3">
+            <HeroDiv className="mt-7 flex flex-wrap gap-3" delay={0.66}>
               <a
                 href="#proyek"
                 className="soft-shine inline-flex min-h-12 items-center justify-center bg-[#111111] px-6 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]"
@@ -425,32 +490,38 @@ export default function Home() {
               >
                 Hubungi saya
               </a>
-            </div>
+            </HeroDiv>
 
-            <div className="fade-up-delay-2 mt-9 flex flex-wrap gap-3">
-              <a
+            <div className="mt-7 flex flex-wrap gap-3">
+              <HeroAnchor
                 href="mailto:sendi.aryadita78@gmail.com"
                 className="soft-shine flex h-11 w-11 items-center justify-center bg-[#d4d3cf] text-lg font-black text-[#111111] shadow-[0_7px_0_rgba(0,0,0,0.14)] transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_10px_0_rgba(0,0,0,0.1)]"
                 aria-label="Email Sendi Aryadita"
+                delay={0.74}
               >
                 @
-              </a>
-              {socialLinks.map((social) => (
-                <a
+              </HeroAnchor>
+              {socialLinks.map((social, index) => (
+                <HeroAnchor
                   key={social.label}
                   href={social.href}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="soft-shine flex h-11 w-11 items-center justify-center bg-[#d4d3cf] text-sm font-black text-[#111111] shadow-[0_7px_0_rgba(0,0,0,0.14)] transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_10px_0_rgba(0,0,0,0.1)]"
                   aria-label={`${social.label} Sendi Aryadita`}
+                  delay={0.82 + index * 0.06}
                 >
                   <SocialIcon name={social.icon} />
-                </a>
+                </HeroAnchor>
               ))}
             </div>
           </div>
 
-          <div className="slide-in-right relative mx-auto flex min-h-[440px] w-full max-w-[560px] items-end justify-center overflow-visible md:min-h-[600px]">
+          <HeroDiv
+            className="relative mx-auto flex min-h-[440px] w-full max-w-[560px] items-end justify-center overflow-visible md:min-h-[600px]"
+            delay={0.36}
+            direction="right"
+          >
             <div className="absolute bottom-14 left-1/2 h-[72%] w-[64%] -translate-x-1/2 rounded-full bg-[#bfdbfe]/45 blur-3xl" />
             <div className="absolute bottom-0 left-1/2 h-[76%] w-[78%] -translate-x-1/2 bg-[linear-gradient(145deg,#f8fbff_0%,#e7f2ff_56%,#cfe4ff_100%)] shadow-[0_26px_64px_rgba(37,99,235,0.16)] [clip-path:polygon(10%_0,100%_0,90%_100%,0_100%)]" />
             <div className="absolute bottom-1 left-1/2 h-16 w-[42%] -translate-x-1/2 rounded-full bg-[#0f172a]/18 blur-xl" />
@@ -465,19 +536,19 @@ export default function Home() {
                 className="hero-photo-image h-full w-auto object-contain object-bottom"
               />
             </div>
-          </div>
+          </HeroDiv>
         </div>
       </section>
 
       <section id="tentang" className="bg-[#111111] py-16 text-white">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[0.82fr_1.18fr] md:items-start">
-          <div className="section-reveal">
+        <StaggerGroup className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[0.82fr_1.18fr] md:items-start">
+          <StaggerDiv>
             <p className="text-sm font-bold uppercase text-[#f0c66b]">About me</p>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
               Mengenal Saya Lebih Dekat
             </h2>
-          </div>
-          <div className="section-reveal space-y-5 text-base leading-8 text-white/72">
+          </StaggerDiv>
+          <StaggerDiv className="space-y-5 text-base leading-8 text-white/72">
             <p>
               Saya adalah mahasiswa Teknologi Informasi, Program Studi Teknologi
               Rekayasa Internet, yang sedang membangun kemampuan di bidang
@@ -495,15 +566,15 @@ export default function Home() {
               melalui project web, praktikum jaringan, dokumentasi teknis, dan
               eksplorasi teknologi baru.
             </p>
-          </div>
-        </div>
+          </StaggerDiv>
+        </StaggerGroup>
       </section>
 
-      <section className="section-reveal bg-[#f3f0ea] py-16">
+      <section className="bg-[#f3f0ea] py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-5 md:grid-cols-4">
+          <StaggerGroup className="grid gap-5 md:grid-cols-4">
             {portfolioContents.map((item, index) => (
-              <div
+              <StaggerDiv
                 key={item.title}
                 className="professional-card group border border-black/10 bg-white p-5 shadow-sm"
               >
@@ -516,15 +587,15 @@ export default function Home() {
                 <p className="mt-4 text-sm font-semibold leading-7 text-black/62">
                   {item.body}
                 </p>
-              </div>
+              </StaggerDiv>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
-      <section id="skill" className="section-reveal bg-[#e7e6e3] py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.74fr_1.26fr] lg:items-start">
-          <div>
+      <section id="skill" className="bg-[#e7e6e3] py-16">
+        <StaggerGroup className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[0.74fr_1.26fr] lg:items-start">
+          <StaggerDiv>
             <p className="text-sm font-bold uppercase text-[#7a5b12]">
               Work Expertise
             </p>
@@ -536,10 +607,10 @@ export default function Home() {
               praktikum, dan eksplorasi teknologi di bidang web development,
               backend, jaringan komputer, dan sistem digital.
             </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          </StaggerDiv>
+          <StaggerGroup className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3" delay={0.1}>
             {skills.map((skill) => (
-              <article
+              <StaggerArticle
                 key={skill.name}
                 className="professional-card group rounded border border-black/10 bg-white p-5 shadow-sm"
               >
@@ -568,15 +639,15 @@ export default function Home() {
                     }`}
                   />
                 </div>
-              </article>
+              </StaggerArticle>
             ))}
-          </div>
-        </div>
+          </StaggerGroup>
+        </StaggerGroup>
       </section>
 
-      <section id="sertifikat" className="section-reveal bg-[#f3f0ea] py-16">
+      <section id="sertifikat" className="bg-[#f3f0ea] py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <ScrollReveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-3xl">
               <p className="text-sm font-bold uppercase text-[#7a5b12]">
                 Certificates
@@ -593,39 +664,39 @@ export default function Home() {
             <p className="w-fit border border-black/10 bg-white px-4 py-2 text-sm font-bold text-black/58">
               {certificates.length} sertifikat
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <StaggerGroup className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3" delay={0.08}>
             {visibleCertificates.map((certificate) => (
               <CertificateCard
                 key={certificate.title}
                 certificate={certificate}
               />
             ))}
-          </div>
+          </StaggerGroup>
 
           {hiddenCertificates.length > 0 ? (
             <details className="mt-6">
               <summary className="certificate-summary soft-shine mx-auto flex w-fit cursor-pointer items-center justify-center bg-[#111111] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]">
                 Lihat lebih banyak
               </summary>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <StaggerGroup className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 {hiddenCertificates.map((certificate) => (
                   <CertificateCard
                     key={certificate.title}
                     certificate={certificate}
                   />
                 ))}
-              </div>
+              </StaggerGroup>
             </details>
           ) : null}
         </div>
 
       </section>
 
-      <section id="proyek" className="section-reveal bg-white py-16">
+      <section id="proyek" className="bg-white py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <ScrollReveal className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
               <p className="text-sm font-bold uppercase text-[#7a5b12]">
                 Portfolio
@@ -634,9 +705,9 @@ export default function Home() {
                 Proyek pilihan
               </h2>
               <p className="mt-5 leading-8 text-black/62">
-                Untuk tahap awal, proyek boleh berasal dari latihan atau tugas
-                kuliah. Yang penting dijelaskan masalah, fitur, teknologi, dan
-                kontribusi kamu.
+                Beberapa project yang saya kerjakan sebagai proses belajar dan
+                pengembangan kemampuan di bidang web development, backend,
+                jaringan komputer, dan sistem digital.
               </p>
             </div>
             <a
@@ -645,77 +716,127 @@ export default function Home() {
             >
               Diskusi proyek
             </a>
-          </div>
+          </ScrollReveal>
 
-          <div className="mt-9 grid gap-5 md:grid-cols-3">
-            {projects.map((project) => (
-              <article
+          <StaggerGroup className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-3" delay={0.08}>
+            {projects.map((project, index) => (
+              <StaggerArticle
                 key={project.title}
-                className="professional-card border border-black/10 bg-[#f8f7f4] p-6"
+                className="professional-card group flex min-h-[340px] flex-col border border-black/10 bg-white p-5 shadow-sm"
               >
-                <p className="text-xs font-bold uppercase text-[#7a5b12]">
-                  {project.status}
-                </p>
-                <h3 className="mt-4 text-2xl font-black leading-tight">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase text-[#7a5b12]">
+                      {project.status}
+                    </p>
+                    <p className="mt-2 text-xs font-bold text-black/44">
+                      {project.category}
+                    </p>
+                  </div>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-black/10 bg-[#f3f7ff] text-xs font-black text-[#2563eb] transition group-hover:border-[#2563eb]/40 group-hover:bg-[#e7f0ff]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3 className="mt-5 text-xl font-black leading-tight">
                   {project.title}
                 </h3>
-                <p className="mt-4 min-h-28 leading-8 text-black/64">
+                <p className="mt-4 overflow-hidden text-sm font-semibold leading-7 text-black/62 [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
                   {project.description}
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+
+                <div className="mt-5 flex flex-wrap gap-2">
                   {project.stack.map((item) => (
                     <span
                       key={item}
-                      className="border border-black/10 bg-white px-3 py-1 text-xs font-bold text-black/70"
+                      className="border border-black/10 bg-[#f8f7f4] px-3 py-1 text-xs font-bold text-black/64 transition group-hover:border-[#f0c66b]/70"
                     >
                       {item}
                     </span>
                   ))}
                 </div>
-              </article>
+
+                <div className="mt-auto pt-6">
+                  <a
+                    href="#kontak"
+                    className="inline-flex min-h-10 items-center justify-center border border-black/12 bg-[#111111] px-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]"
+                  >
+                    Detail Project
+                  </a>
+                </div>
+              </StaggerArticle>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
-      <section id="kontak" className="bg-[#111111] py-16 text-white">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[1fr_1fr] md:items-center">
-          <div>
+      <section id="kontak" className="bg-[#111111] pb-16 pt-20 text-white">
+        <StaggerGroup className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-[0.92fr_1.08fr] md:items-center">
+          <StaggerDiv>
             <p className="text-sm font-bold uppercase text-[#f0c66b]">Contact</p>
             <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl">
               Mari terhubung dan bangun karya berikutnya.
             </h2>
-            <p className="mt-5 leading-8 text-white/70">
-              Hubungi saya lewat email atau kunjungi media sosial untuk melihat
-              aktivitas, karya, dan proses belajar terbaru.
+            <p className="mt-5 max-w-xl leading-8 text-white/70">
+              Saya terbuka untuk diskusi project, kolaborasi, tugas
+              pengembangan web, jaringan komputer, atau sekadar terhubung
+              melalui media sosial.
             </p>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            <a
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="mailto:sendi.aryadita78@gmail.com"
+                className="soft-shine inline-flex min-h-11 items-center justify-center bg-white px-5 text-sm font-bold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#f0c66b]"
+              >
+                Kirim Email
+              </a>
+              <a
+                href={githubProfile}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center justify-center border border-white/20 px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:border-[#f0c66b] hover:bg-white/8"
+              >
+                Lihat GitHub
+              </a>
+            </div>
+          </StaggerDiv>
+          <StaggerGroup className="grid gap-3 sm:grid-cols-2" delay={0.1}>
+            <StaggerAnchor
               href="mailto:sendi.aryadita78@gmail.com"
-              className="professional-card flex items-center gap-3 border border-white/18 p-5 font-bold transition hover:border-[#f0c66b] hover:bg-white/8"
+              className="professional-card group flex min-h-24 items-center gap-4 border border-white/18 p-5 transition hover:border-[#f0c66b] hover:bg-white/8 hover:shadow-[0_22px_45px_rgba(240,198,107,0.1)]"
             >
-              <span className="flex h-8 w-8 items-center justify-center bg-white/10 text-sm">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-white/10 text-sm font-black text-[#f0c66b] transition group-hover:scale-105 group-hover:bg-[#f0c66b] group-hover:text-[#111111]">
                 @
               </span>
-              <span>Email</span>
-            </a>
+              <span className="min-w-0">
+                <span className="block text-sm font-black">Email</span>
+                <span className="mt-1 block break-all text-xs font-semibold leading-5 text-white/62 sm:text-[13px]">
+                  sendi.aryadita78@gmail.com
+                </span>
+              </span>
+            </StaggerAnchor>
             {socialLinks.map((social) => (
-              <a
+              <StaggerAnchor
                 key={social.label}
                 href={social.href}
                 target="_blank"
-                rel="noreferrer"
-                className="professional-card flex items-center gap-3 border border-white/18 p-5 font-bold transition hover:border-[#f0c66b] hover:bg-white/8"
+                rel="noopener noreferrer"
+                className="professional-card group flex min-h-24 items-center gap-4 border border-white/18 p-5 transition hover:border-[#f0c66b] hover:bg-white/8 hover:shadow-[0_22px_45px_rgba(240,198,107,0.1)]"
               >
-                <span className="flex h-8 w-8 items-center justify-center bg-white/10">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-white/10 text-[#f0c66b] transition group-hover:scale-105 group-hover:bg-[#f0c66b] group-hover:text-[#111111]">
                   <SocialIcon name={social.icon} />
                 </span>
-                <span>{social.label}</span>
-              </a>
+                <span>
+                  <span className="block text-sm font-black">
+                    {social.label}
+                  </span>
+                  <span className="mt-1 block text-sm font-semibold text-white/62">
+                    Kunjungi profil
+                  </span>
+                </span>
+              </StaggerAnchor>
             ))}
-          </div>
-        </div>
+          </StaggerGroup>
+        </StaggerGroup>
       </section>
     </main>
   );
