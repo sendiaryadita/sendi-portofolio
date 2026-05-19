@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaDatabase, FaLightbulb, FaNetworkWired, FaServer } from "react-icons/fa";
-import CertificateGrid from "./certificate-grid";
+import CertificateGrid, { type CertificateItem } from "./certificate-grid";
 import {
   SiCss,
   SiDjango,
@@ -59,6 +59,7 @@ const projects = [
     category: "Web GIS Platform",
     status: "Featured Project",
     visualType: "map",
+    href: "/projects/dayadesa",
     description:
       "Sistem informasi geospasial ketahanan energi desa untuk menampilkan data desa, peta energi, dan Energy Security Index.",
     stack: ["Django", "Bootstrap", "Leaflet", "PostgreSQL"],
@@ -68,6 +69,7 @@ const projects = [
     category: "Python Application",
     status: "College Project",
     visualType: "parking",
+    href: "/projects/smart-parking",
     description:
       "Sistem simulasi parkir berbasis Python dengan konsep OOP, validasi input, subclass kendaraan, dan manajemen slot parkir.",
     stack: ["Python", "OOP", "CLI"],
@@ -77,6 +79,7 @@ const projects = [
     category: "Network Analysis",
     status: "Research Project",
     visualType: "wifi",
+    href: "/projects/wifi-network-optimization",
     description:
       "Analisis dan optimasi jaringan Wi-Fi kampus berdasarkan SSID, RSSI, channel, dan performa koneksi.",
     stack: ["Wi-Fi Analyzer", "Network Analysis", "Documentation"],
@@ -86,6 +89,7 @@ const projects = [
     category: "Computer Network",
     status: "Lab Project",
     visualType: "network",
+    href: "/projects/cisco-network-topology",
     description:
       "Perancangan topologi jaringan menggunakan Cisco Packet Tracer dengan subnetting, routing, switch, router, dan PC client.",
     stack: ["Cisco Packet Tracer", "Subnetting", "Routing"],
@@ -95,6 +99,7 @@ const projects = [
     category: "Web Development",
     status: "In Progress",
     visualType: "website",
+    href: "/projects/personal-portfolio",
     description:
       "Website portofolio pribadi untuk menampilkan profil, skill, sertifikat, project, dan kontak profesional.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -104,6 +109,7 @@ const projects = [
     category: "Internet of Things",
     status: "Concept Project",
     visualType: "sensor",
+    href: "/projects/iot-sensor-concept",
     description:
       "Konsep pengembangan sensor IoT untuk membaca kondisi lingkungan secara otomatis dan real-time.",
     stack: ["IoT", "Sensor", "Automation"],
@@ -129,11 +135,12 @@ const portfolioContents = [
   },
 ];
 
-const certificates = [
+const certificates: CertificateItem[] = [
   {
     slug: "ccna-introduction-to-networks",
     title: "CCNA: Introduction to Networks",
     issuer: "Cisco Networking Academy",
+    category: "Networking",
     description:
       "Diberikan oleh Politeknik Negeri Lampung (POLINELA) melalui program Cisco Networking Academy.",
     completionDate: "01 Aug 2025",
@@ -149,6 +156,7 @@ const certificates = [
     slug: "ccna-switching-routing-wireless-essentials",
     title: "CCNA: Switching, Routing, and Wireless Essentials",
     issuer: "Cisco Networking Academy",
+    category: "Networking",
     description:
       "Diberikan oleh Politeknik Negeri Lampung (POLINELA) melalui program Cisco Networking Academy.",
     completionDate: "08 Jan 2026",
@@ -164,6 +172,7 @@ const certificates = [
     slug: "linux-essentials",
     title: "Linux Essentials",
     issuer: "Cisco Networking Academy",
+    category: "Networking",
     description:
       "Diberikan oleh Politeknik Negeri Lampung (POLINELA) melalui program Cisco Networking Academy.",
     completionDate: "01 Aug 2025",
@@ -179,6 +188,7 @@ const certificates = [
     slug: "dicoding-belajar-dasar-ai",
     title: "Belajar Dasar AI",
     issuer: "Dicoding Indonesia",
+    category: "Programming",
     description:
       "Sertifikat kompetensi kelulusan kelas Belajar Dasar AI. Sertifikat ini memiliki dua halaman dan ditampilkan dalam satu kartu.",
     completionDate: "07 Februari 2026",
@@ -199,6 +209,7 @@ const certificates = [
     slug: "microsoft-word-lanjutan",
     title: "Kelas Microsoft Word Lanjutan",
     issuer: "Skillpedia Indonesia",
+    category: "Office",
     description:
       "Sertifikat program pembelajaran skill secara daring untuk kelas Microsoft Word Lanjutan.",
     completionDate: "27 Maret 2026",
@@ -214,6 +225,7 @@ const certificates = [
     slug: "digital-marketing-fundamentals",
     title: "Kelas Digital Marketing Fundamentals",
     issuer: "Skillpedia Indonesia",
+    category: "Web",
     description:
       "Sertifikat program pembelajaran skill secara daring untuk kelas Digital Marketing Fundamentals.",
     completionDate: "13 September 2025",
@@ -229,6 +241,7 @@ const certificates = [
     slug: "dqlab-r-fundamental-data-science",
     title: "R Fundamental for Data Science",
     issuer: "DQLab",
+    category: "Programming",
     description:
       "Sertifikat penyelesaian materi R Fundamental for Data Science dari DQLab.",
     completionDate: "02 Oct 2024",
@@ -244,6 +257,7 @@ const certificates = [
     slug: "dqlab-fundamental-sql-select-statement",
     title: "Fundamental SQL Using SELECT Statement",
     issuer: "DQLab",
+    category: "Data",
     description:
       "Sertifikat penyelesaian materi Fundamental SQL Using SELECT Statement dari DQLab.",
     completionDate: "03 Oct 2024",
@@ -259,6 +273,7 @@ const certificates = [
     slug: "dqlab-python-fundamental-data-science",
     title: "Python Fundamental for Data Science",
     issuer: "DQLab",
+    category: "Programming",
     description:
       "Sertifikat penyelesaian materi Python Fundamental for Data Science dari DQLab.",
     completionDate: "03 Oct 2024",
@@ -274,6 +289,7 @@ const certificates = [
     slug: "dqlab-freeclass-data-science-fundamentals",
     title: "Freeclass: Data Science Fundamentals",
     issuer: "DQLab",
+    category: "Data",
     description:
       "Sertifikat penyelesaian Freeclass: Data Science Fundamentals dari DQLab.",
     completionDate: "Tidak tercantum",
@@ -289,6 +305,7 @@ const certificates = [
     slug: "dqlab-quiz-basic-excel",
     title: "Quiz Basic Excel",
     issuer: "DQLab",
+    category: "Office",
     description:
       "Sertifikat penyelesaian Quiz Basic Excel dari DQLab.",
     completionDate: "03 Oct 2024",
@@ -304,6 +321,7 @@ const certificates = [
     slug: "dqlab-guide-learn-r-with-ai",
     title: "Guide to Learn R with AI at DQLab",
     issuer: "DQLab",
+    category: "Data",
     description:
       "Sertifikat penyelesaian materi Guide to Learn R with AI at DQLab.",
     completionDate: "04 Oct 2024",
@@ -319,6 +337,7 @@ const certificates = [
     slug: "dqlab-introduction-data-science-with-r",
     title: "Introduction to Data Science with R",
     issuer: "DQLab",
+    category: "Data",
     description:
       "Sertifikat penyelesaian materi Introduction to Data Science with R dari DQLab.",
     completionDate: "04 Oct 2024",
@@ -621,6 +640,13 @@ export default function Home() {
               >
                 Hubungi saya
               </a>
+              <a
+                href="/cv/sendi-aryadita-cv.pdf"
+                download
+                className="inline-flex min-h-12 items-center justify-center border border-[#7a5b12]/35 bg-[#f0c66b]/85 px-6 text-sm font-bold text-[#111111] transition hover:-translate-y-0.5 hover:bg-[#f0c66b]"
+              >
+                Download CV
+              </a>
             </HeroDiv>
 
             <div className="mt-7 flex flex-wrap gap-3">
@@ -761,7 +787,7 @@ export default function Home() {
                 </h3>
                 <div className="mt-4 h-1.5 overflow-hidden rounded bg-black/8">
                   <div
-                    className={`h-full rounded bg-[#2563eb] ${
+                    className={`h-full rounded bg-[#7a5b12] ${
                       skill.level === "Intermediate"
                         ? "w-3/4"
                         : skill.level === "Basic"
@@ -867,12 +893,12 @@ export default function Home() {
                 </div>
 
                 <div className="mt-auto pt-6">
-                  <a
-                    href="#kontak"
+                  <Link
+                    href={project.href}
                     className="inline-flex min-h-10 items-center justify-center border border-black/12 bg-[#111111] px-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]"
                   >
                     Detail Project
-                  </a>
+                  </Link>
                 </div>
               </StaggerArticle>
             ))}
@@ -948,6 +974,9 @@ export default function Home() {
           </StaggerGroup>
         </StaggerGroup>
       </section>
+      <footer className="border-t border-white/10 bg-[#111111] px-6 py-6 text-center text-sm font-semibold text-white/58">
+        © 2026 Sendi Aryadita. Built with Next.js.
+      </footer>
     </main>
   );
 }

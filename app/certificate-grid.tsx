@@ -4,10 +4,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { StaggerArticle, StaggerGroup } from "./animated";
 
+const certificateCategories = ["All", "Networking", "Programming", "Data", "Web", "Office"] as const;
+
+type CertificateCategory = (typeof certificateCategories)[number];
+type CertificateItemCategory = Exclude<CertificateCategory, "All">;
+
 export type CertificateItem = {
   slug: string;
   title: string;
   issuer: string;
+  category: CertificateItemCategory;
   description: string;
   completionDate: string;
   images: {
@@ -46,9 +52,14 @@ function CertificateCard({ certificate }: { certificate: CertificateItem }) {
       </a>
 
       <div className="flex flex-1 flex-col pt-4">
-        <p className="certificate-issuer text-[11px] font-bold uppercase text-[#7a5b12]">
-          {certificate.issuer}
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <p className="certificate-issuer text-[11px] font-bold uppercase text-[#7a5b12]">
+            {certificate.issuer}
+          </p>
+          <span className="shrink-0 border border-black/10 bg-[#f8f7f4] px-2 py-1 text-[10px] font-black uppercase text-black/50">
+            {certificate.category}
+          </span>
+        </div>
         <h3 className="certificate-title mt-2 text-base font-black leading-tight">
           {certificate.title}
         </h3>
@@ -92,18 +103,48 @@ function CertificateCard({ certificate }: { certificate: CertificateItem }) {
 }
 
 export default function CertificateGrid({
-  certificates,
+  certificates: allCertificates,
 }: {
   certificates: CertificateItem[];
 }) {
+  const [selectedCategory, setSelectedCategory] = useState<CertificateCategory>("All");
   const [showAllCertificates, setShowAllCertificates] = useState(false);
+  const certificates =
+    selectedCategory === "All"
+      ? allCertificates
+      : allCertificates.filter((certificate) => certificate.category === selectedCategory);
   const visibleCertificates = showAllCertificates ? certificates : certificates.slice(0, 6);
   const hasMoreCertificates = certificates.length > 6;
 
   return (
     <>
+      <div className="mt-8 flex flex-wrap gap-2">
+        {certificateCategories.map((category) => {
+          const isActive = selectedCategory === category;
+
+          return (
+            <button
+              key={category}
+              type="button"
+              onClick={() => {
+                setSelectedCategory(category);
+                setShowAllCertificates(false);
+              }}
+              className={`min-h-10 border px-4 text-xs font-black uppercase transition hover:-translate-y-0.5 ${
+                isActive
+                  ? "bg-[#111111] text-white border-[#111111] shadow-[0_14px_30px_rgba(17,17,17,0.16)]"
+                  : "border-black/10 bg-white text-black/58 hover:border-[#7a5b12]/50 hover:text-[#7a5b12]"
+              }`}
+              aria-pressed={isActive}
+            >
+              {category}
+            </button>
+          );
+        })}
+      </div>
+
       <StaggerGroup
-        key={showAllCertificates ? "all-certificates" : "limited-certificates"}
+        key={`${selectedCategory}-${showAllCertificates ? "all-certificates" : "limited-certificates"}`}
         className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3"
         delay={0.08}
       >
