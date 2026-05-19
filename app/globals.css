@@ -341,6 +341,512 @@ html {
   display: none;
 }
 
+.project-thumbnail {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.28)),
+    linear-gradient(135deg, #f8f7f4 0%, #edf3fb 100%);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-thumbnail::before {
+  background-image:
+    linear-gradient(rgba(17, 17, 17, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 17, 17, 0.035) 1px, transparent 1px);
+  background-size: 22px 22px;
+  content: "";
+  inset: 0;
+  opacity: 0.72;
+  position: absolute;
+}
+
+.project-thumbnail::after {
+  background: radial-gradient(circle at 72% 20%, rgba(240, 198, 107, 0.22), transparent 34%);
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.project-thumbnail-layer {
+  height: 100%;
+  position: relative;
+  transition:
+    transform 320ms ease,
+    opacity 320ms ease;
+  width: 100%;
+  z-index: 1;
+}
+
+.professional-card:hover .project-thumbnail-layer {
+  opacity: 0.96;
+  transform: scale(1.035);
+}
+
+.map-path,
+.map-point,
+.map-panel,
+.parking-lane,
+.parking-slot,
+.parking-car,
+.wifi-core,
+.wifi-ring,
+.wifi-chart,
+.network-line,
+.network-node,
+.browser-window,
+.browser-topbar,
+.browser-hero,
+.browser-line,
+.browser-card,
+.sensor-chip,
+.sensor-ring,
+.sensor-dot,
+.sensor-data {
+  position: absolute;
+}
+
+.project-thumbnail-map {
+  background:
+    linear-gradient(135deg, rgba(244, 239, 226, 0.9), rgba(225, 239, 255, 0.78)),
+    #f8f7f4;
+}
+
+.map-path {
+  border: 2px solid rgba(122, 91, 18, 0.42);
+  border-left: 0;
+  border-radius: 999px;
+  height: 96px;
+  width: 190px;
+}
+
+.map-path-one {
+  left: 18%;
+  top: 24%;
+  transform: rotate(-18deg);
+}
+
+.map-path-two {
+  border-color: rgba(37, 99, 235, 0.28);
+  left: 36%;
+  top: 12%;
+  transform: rotate(23deg);
+}
+
+.map-point {
+  background: #111111;
+  border: 4px solid #f0c66b;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(17, 17, 17, 0.18);
+  height: 18px;
+  width: 18px;
+}
+
+.map-point-one {
+  left: 25%;
+  top: 35%;
+}
+
+.map-point-two {
+  background: #2563eb;
+  left: 58%;
+  top: 27%;
+}
+
+.map-point-three {
+  left: 70%;
+  top: 62%;
+}
+
+.map-panel {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  bottom: 18px;
+  box-shadow: 0 16px 35px rgba(17, 17, 17, 0.1);
+  display: grid;
+  gap: 5px;
+  left: 18px;
+  padding: 10px;
+  width: 88px;
+}
+
+.map-panel span {
+  background: rgba(17, 17, 17, 0.14);
+  display: block;
+  height: 5px;
+}
+
+.map-panel span:first-child {
+  background: #7a5b12;
+  width: 60%;
+}
+
+.project-thumbnail-parking {
+  background:
+    linear-gradient(135deg, #f8f7f4 0%, #eff3f7 58%, #f5efe1 100%);
+}
+
+.parking-lane {
+  background: rgba(17, 17, 17, 0.12);
+  height: 3px;
+  left: 10%;
+  top: 50%;
+  width: 80%;
+}
+
+.parking-slot {
+  border: 2px solid rgba(17, 17, 17, 0.16);
+  height: 52px;
+  width: 70px;
+}
+
+.parking-slot-1,
+.parking-slot-2,
+.parking-slot-3 {
+  top: 26px;
+}
+
+.parking-slot-4,
+.parking-slot-5,
+.parking-slot-6 {
+  bottom: 26px;
+}
+
+.parking-slot-1,
+.parking-slot-4 {
+  left: 12%;
+}
+
+.parking-slot-2,
+.parking-slot-5 {
+  left: calc(50% - 35px);
+}
+
+.parking-slot-3,
+.parking-slot-6 {
+  right: 12%;
+}
+
+.parking-car {
+  background: linear-gradient(135deg, #111111, #7a5b12);
+  box-shadow: 0 12px 24px rgba(17, 17, 17, 0.18);
+  height: 28px;
+  left: 11px;
+  top: 11px;
+  width: 44px;
+}
+
+.project-thumbnail-wifi {
+  background:
+    radial-gradient(circle at 48% 44%, rgba(37, 99, 235, 0.14), transparent 34%),
+    linear-gradient(135deg, #f8f7f4, #eff6ff);
+}
+
+.wifi-core {
+  background: #111111;
+  border: 5px solid #f0c66b;
+  border-radius: 999px;
+  height: 22px;
+  left: calc(50% - 11px);
+  top: 82px;
+  width: 22px;
+}
+
+.wifi-ring {
+  border: 3px solid rgba(37, 99, 235, 0.35);
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-radius: 999px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.wifi-ring-one {
+  height: 56px;
+  width: 56px;
+}
+
+.wifi-ring-two {
+  height: 92px;
+  width: 92px;
+}
+
+.wifi-ring-three {
+  height: 130px;
+  width: 130px;
+}
+
+.wifi-chart {
+  background: linear-gradient(180deg, #2563eb, #111111);
+  bottom: 24px;
+  width: 12px;
+}
+
+.wifi-chart-one {
+  height: 42px;
+  right: 56px;
+}
+
+.wifi-chart-two {
+  height: 66px;
+  right: 34px;
+}
+
+.wifi-chart-three {
+  background: #f0c66b;
+  height: 90px;
+  right: 12px;
+}
+
+.project-thumbnail-network {
+  background:
+    radial-gradient(circle at 50% 45%, rgba(240, 198, 107, 0.16), transparent 40%),
+    linear-gradient(135deg, #f8f7f4, #eef4fb);
+}
+
+.network-line {
+  background: rgba(17, 17, 17, 0.18);
+  height: 2px;
+  left: 26%;
+  top: 50%;
+  transform-origin: center;
+  width: 48%;
+}
+
+.network-line-one {
+  transform: rotate(0deg);
+}
+
+.network-line-two {
+  transform: rotate(32deg);
+}
+
+.network-line-three {
+  transform: rotate(-32deg);
+}
+
+.network-node {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(17, 17, 17, 0.16);
+  box-shadow: 0 14px 28px rgba(17, 17, 17, 0.1);
+  display: flex;
+  font-size: 12px;
+  font-weight: 900;
+  justify-content: center;
+}
+
+.network-router {
+  background: #111111;
+  border-color: #111111;
+  color: #f0c66b;
+  height: 48px;
+  left: calc(50% - 24px);
+  top: 66px;
+  width: 48px;
+}
+
+.network-switch {
+  color: #2563eb;
+  height: 40px;
+  left: 15%;
+  top: 70px;
+  width: 56px;
+}
+
+.network-pc-one,
+.network-pc-two,
+.network-pc-three {
+  height: 34px;
+  width: 42px;
+}
+
+.network-pc-one {
+  right: 18%;
+  top: 28px;
+}
+
+.network-pc-two {
+  right: 14%;
+  top: 74px;
+}
+
+.network-pc-three {
+  right: 22%;
+  top: 120px;
+}
+
+.project-thumbnail-website {
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 46%),
+    linear-gradient(135deg, #f8f7f4, #f1f1ee);
+}
+
+.browser-window {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  box-shadow: 0 18px 38px rgba(17, 17, 17, 0.1);
+  height: 122px;
+  left: 11%;
+  top: 28px;
+  width: 78%;
+}
+
+.browser-topbar {
+  align-items: center;
+  background: #111111;
+  display: flex;
+  gap: 5px;
+  height: 24px;
+  left: 0;
+  padding-left: 10px;
+  top: 0;
+  width: 100%;
+}
+
+.browser-topbar span {
+  background: #f0c66b;
+  border-radius: 999px;
+  display: block;
+  height: 6px;
+  width: 6px;
+}
+
+.browser-hero {
+  background: linear-gradient(90deg, #111111, #7a5b12);
+  height: 34px;
+  left: 12px;
+  top: 38px;
+  width: 46%;
+}
+
+.browser-line {
+  background: rgba(17, 17, 17, 0.16);
+  height: 6px;
+  left: 12px;
+}
+
+.browser-line-one {
+  top: 82px;
+  width: 58%;
+}
+
+.browser-line-two {
+  top: 96px;
+  width: 40%;
+}
+
+.browser-card {
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  height: 30px;
+  top: 76px;
+  width: 24%;
+}
+
+.browser-card-one {
+  right: 42px;
+}
+
+.browser-card-two {
+  right: 12px;
+  width: 22px;
+}
+
+.project-thumbnail-sensor {
+  background:
+    radial-gradient(circle at 46% 50%, rgba(240, 198, 107, 0.2), transparent 36%),
+    linear-gradient(135deg, #f8f7f4, #eff6ff);
+}
+
+.sensor-chip {
+  align-items: center;
+  background: #111111;
+  box-shadow: 0 18px 36px rgba(17, 17, 17, 0.16);
+  display: grid;
+  gap: 5px;
+  height: 58px;
+  justify-items: center;
+  left: calc(50% - 29px);
+  padding: 12px;
+  top: 61px;
+  width: 58px;
+  z-index: 2;
+}
+
+.sensor-chip span {
+  background: #f0c66b;
+  display: block;
+  height: 4px;
+  width: 28px;
+}
+
+.sensor-ring {
+  border: 2px solid rgba(37, 99, 235, 0.25);
+  border-radius: 999px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.sensor-ring-one {
+  height: 94px;
+  width: 94px;
+}
+
+.sensor-ring-two {
+  height: 132px;
+  width: 132px;
+}
+
+.sensor-dot {
+  background: #2563eb;
+  border: 4px solid #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.2);
+  height: 18px;
+  width: 18px;
+}
+
+.sensor-dot-one {
+  left: 22%;
+  top: 33%;
+}
+
+.sensor-dot-two {
+  right: 21%;
+  top: 60%;
+}
+
+.sensor-data {
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  bottom: 18px;
+  display: grid;
+  gap: 5px;
+  padding: 8px;
+  right: 18px;
+  width: 76px;
+}
+
+.sensor-data span {
+  background: rgba(17, 17, 17, 0.16);
+  display: block;
+  height: 5px;
+}
+
+.sensor-data span:nth-child(2) {
+  background: #7a5b12;
+  width: 72%;
+}
+
+@media (max-width: 640px) {
+  .project-thumbnail {
+    height: 170px;
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

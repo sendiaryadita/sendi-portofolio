@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaDatabase, FaLightbulb, FaNetworkWired, FaServer } from "react-icons/fa";
+import CertificateGrid from "./certificate-grid";
 import {
   SiCss,
   SiDjango,
@@ -57,6 +58,7 @@ const projects = [
     title: "DayaDesa",
     category: "Web GIS Platform",
     status: "Featured Project",
+    visualType: "map",
     description:
       "Sistem informasi geospasial ketahanan energi desa untuk menampilkan data desa, peta energi, dan Energy Security Index.",
     stack: ["Django", "Bootstrap", "Leaflet", "PostgreSQL"],
@@ -65,6 +67,7 @@ const projects = [
     title: "Smart Parking System",
     category: "Python Application",
     status: "College Project",
+    visualType: "parking",
     description:
       "Sistem simulasi parkir berbasis Python dengan konsep OOP, validasi input, subclass kendaraan, dan manajemen slot parkir.",
     stack: ["Python", "OOP", "CLI"],
@@ -73,6 +76,7 @@ const projects = [
     title: "Wi-Fi Network Optimization",
     category: "Network Analysis",
     status: "Research Project",
+    visualType: "wifi",
     description:
       "Analisis dan optimasi jaringan Wi-Fi kampus berdasarkan SSID, RSSI, channel, dan performa koneksi.",
     stack: ["Wi-Fi Analyzer", "Network Analysis", "Documentation"],
@@ -81,6 +85,7 @@ const projects = [
     title: "Cisco Network Topology",
     category: "Computer Network",
     status: "Lab Project",
+    visualType: "network",
     description:
       "Perancangan topologi jaringan menggunakan Cisco Packet Tracer dengan subnetting, routing, switch, router, dan PC client.",
     stack: ["Cisco Packet Tracer", "Subnetting", "Routing"],
@@ -89,6 +94,7 @@ const projects = [
     title: "Personal Portfolio Website",
     category: "Web Development",
     status: "In Progress",
+    visualType: "website",
     description:
       "Website portofolio pribadi untuk menampilkan profil, skill, sertifikat, project, dan kontak profesional.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
@@ -97,6 +103,7 @@ const projects = [
     title: "IoT Sensor Concept",
     category: "Internet of Things",
     status: "Concept Project",
+    visualType: "sensor",
     description:
       "Konsep pengembangan sensor IoT untuk membaca kondisi lingkungan secara otomatis dan real-time.",
     stack: ["IoT", "Sensor", "Automation"],
@@ -189,21 +196,6 @@ const certificates = [
     ],
   },
   {
-    slug: "pkkmb-polinela",
-    title: "PKKMB POLINELA Tahun Akademik 2024/2025",
-    issuer: "Politeknik Negeri Lampung",
-    description:
-      "Sertifikat kegiatan Pengenalan Kehidupan Kampus Bagi Mahasiswa Baru Politeknik Negeri Lampung.",
-    completionDate: "26 Agustus 2024",
-    images: [
-      {
-        src: "/certificates/pkkmb-polinela-sendi-aryadita.png",
-        width: 1871,
-        height: 1323,
-      },
-    ],
-  },
-  {
     slug: "microsoft-word-lanjutan",
     title: "Kelas Microsoft Word Lanjutan",
     issuer: "Skillpedia Indonesia",
@@ -233,10 +225,112 @@ const certificates = [
       },
     ],
   },
+  {
+    slug: "dqlab-r-fundamental-data-science",
+    title: "R Fundamental for Data Science",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian materi R Fundamental for Data Science dari DQLab.",
+    completionDate: "02 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-r-fundamental-data-science-sendi-aryadita.jpg",
+        width: 738,
+        height: 524,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-fundamental-sql-select-statement",
+    title: "Fundamental SQL Using SELECT Statement",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian materi Fundamental SQL Using SELECT Statement dari DQLab.",
+    completionDate: "03 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-fundamental-sql-select-statement-sendi-aryadita.jpg",
+        width: 749,
+        height: 526,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-python-fundamental-data-science",
+    title: "Python Fundamental for Data Science",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian materi Python Fundamental for Data Science dari DQLab.",
+    completionDate: "03 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-python-fundamental-data-science-sendi-aryadita.jpg",
+        width: 750,
+        height: 529,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-freeclass-data-science-fundamentals",
+    title: "Freeclass: Data Science Fundamentals",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian Freeclass: Data Science Fundamentals dari DQLab.",
+    completionDate: "Tidak tercantum",
+    images: [
+      {
+        src: "/certificates/dqlab-freeclass-data-science-fundamentals-sendi-aryadita.jpg",
+        width: 749,
+        height: 523,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-quiz-basic-excel",
+    title: "Quiz Basic Excel",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian Quiz Basic Excel dari DQLab.",
+    completionDate: "03 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-quiz-basic-excel-sendi-aryadita.jpg",
+        width: 749,
+        height: 519,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-guide-learn-r-with-ai",
+    title: "Guide to Learn R with AI at DQLab",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian materi Guide to Learn R with AI at DQLab.",
+    completionDate: "04 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-guide-learn-r-with-ai-sendi-aryadita.jpg",
+        width: 749,
+        height: 520,
+      },
+    ],
+  },
+  {
+    slug: "dqlab-introduction-data-science-with-r",
+    title: "Introduction to Data Science with R",
+    issuer: "DQLab",
+    description:
+      "Sertifikat penyelesaian materi Introduction to Data Science with R dari DQLab.",
+    completionDate: "04 Oct 2024",
+    images: [
+      {
+        src: "/certificates/dqlab-introduction-data-science-with-r-sendi-aryadita.jpg",
+        width: 749,
+        height: 521,
+      },
+    ],
+  },
 ];
-
-const visibleCertificates = certificates.slice(0, 6);
-const hiddenCertificates = certificates.slice(6);
 
 const socialLinks = [
   {
@@ -321,81 +415,118 @@ function SocialIcon({ name }: { name: string }) {
   );
 }
 
-function CertificateCard({
-  certificate,
+function ProjectThumbnail({
+  type,
 }: {
-  certificate: (typeof certificates)[number];
+  type: (typeof projects)[number]["visualType"];
 }) {
-  const firstImage = certificate.images[0];
-  const hasMultiplePages = certificate.images.length > 1;
-
-  return (
-    <StaggerArticle className="professional-card group flex min-h-[340px] flex-col border border-black/10 bg-white p-3 shadow-sm">
-      <a
-        href={firstImage.src}
-        target="_blank"
-        rel="noreferrer"
-        aria-label={`Lihat sertifikat ${certificate.title}`}
-        className="relative flex h-[170px] overflow-hidden border border-black/10 bg-[#f8f7f4]"
-      >
-        <Image
-          src={firstImage.src}
-          alt={`Thumbnail sertifikat ${certificate.title} - Sendi Aryadita`}
-          width={firstImage.width}
-          height={firstImage.height}
-          sizes="(min-width: 1280px) 310px, (min-width: 768px) 44vw, 90vw"
-          className="h-full w-full object-contain p-2 transition duration-300 group-hover:scale-[1.035]"
-        />
-        {hasMultiplePages ? (
-          <span className="absolute left-2 top-2 bg-[#111111] px-2.5 py-1 text-[10px] font-black uppercase text-white">
-            2 Halaman
+  if (type === "map") {
+    return (
+      <div className="project-thumbnail project-thumbnail-map" aria-hidden="true">
+        <div className="project-thumbnail-layer">
+          <span className="map-path map-path-one" />
+          <span className="map-path map-path-two" />
+          <span className="map-point map-point-one" />
+          <span className="map-point map-point-two" />
+          <span className="map-point map-point-three" />
+          <span className="map-panel">
+            <span />
+            <span />
+            <span />
           </span>
-        ) : null}
-      </a>
-
-      <div className="flex flex-1 flex-col pt-4">
-        <p className="certificate-issuer text-[11px] font-bold uppercase text-[#7a5b12]">
-          {certificate.issuer}
-        </p>
-        <h3 className="certificate-title mt-2 text-base font-black leading-tight">
-          {certificate.title}
-        </h3>
-
-        <div className="mt-auto pt-4">
-          <p className="text-sm font-bold text-black/58">
-            Tanggal: {certificate.completionDate}
-          </p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {hasMultiplePages ? (
-              certificate.images.map((image, index) => (
-                <a
-                  key={image.src}
-                  href={image.src}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`inline-flex min-h-10 items-center justify-center px-4 text-sm font-bold transition hover:-translate-y-0.5 ${
-                    index === 0
-                      ? "soft-shine bg-[#111111] text-white hover:bg-[#7a5b12]"
-                      : "border border-black/12 bg-[#f8f7f4] text-[#111111] hover:bg-white"
-                  }`}
-                >
-                  Halaman {index + 1}
-                </a>
-              ))
-            ) : (
-              <a
-                href={firstImage.src}
-                target="_blank"
-                rel="noreferrer"
-                className="soft-shine inline-flex min-h-10 items-center justify-center bg-[#111111] px-4 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]"
-              >
-                Buka gambar
-              </a>
-            )}
-          </div>
         </div>
       </div>
-    </StaggerArticle>
+    );
+  }
+
+  if (type === "parking") {
+    return (
+      <div className="project-thumbnail project-thumbnail-parking" aria-hidden="true">
+        <div className="project-thumbnail-layer">
+          <span className="parking-lane" />
+          {Array.from({ length: 6 }).map((_, index) => (
+            <span key={index} className={`parking-slot parking-slot-${index + 1}`}>
+              {index === 1 || index === 4 ? <span className="parking-car" /> : null}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "wifi") {
+    return (
+      <div className="project-thumbnail project-thumbnail-wifi" aria-hidden="true">
+        <div className="project-thumbnail-layer">
+          <span className="wifi-core" />
+          <span className="wifi-ring wifi-ring-one" />
+          <span className="wifi-ring wifi-ring-two" />
+          <span className="wifi-ring wifi-ring-three" />
+          <span className="wifi-chart wifi-chart-one" />
+          <span className="wifi-chart wifi-chart-two" />
+          <span className="wifi-chart wifi-chart-three" />
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "network") {
+    return (
+      <div className="project-thumbnail project-thumbnail-network" aria-hidden="true">
+        <div className="project-thumbnail-layer">
+          <span className="network-line network-line-one" />
+          <span className="network-line network-line-two" />
+          <span className="network-line network-line-three" />
+          <span className="network-node network-router">R</span>
+          <span className="network-node network-switch">S</span>
+          <span className="network-node network-pc-one" />
+          <span className="network-node network-pc-two" />
+          <span className="network-node network-pc-three" />
+        </div>
+      </div>
+    );
+  }
+
+  if (type === "website") {
+    return (
+      <div className="project-thumbnail project-thumbnail-website" aria-hidden="true">
+        <div className="project-thumbnail-layer">
+          <span className="browser-window">
+            <span className="browser-topbar">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="browser-hero" />
+            <span className="browser-line browser-line-one" />
+            <span className="browser-line browser-line-two" />
+            <span className="browser-card browser-card-one" />
+            <span className="browser-card browser-card-two" />
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="project-thumbnail project-thumbnail-sensor" aria-hidden="true">
+      <div className="project-thumbnail-layer">
+        <span className="sensor-chip">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span className="sensor-ring sensor-ring-one" />
+        <span className="sensor-ring sensor-ring-two" />
+        <span className="sensor-dot sensor-dot-one" />
+        <span className="sensor-dot sensor-dot-two" />
+        <span className="sensor-data">
+          <span />
+          <span />
+          <span />
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -666,30 +797,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <StaggerGroup className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3" delay={0.08}>
-            {visibleCertificates.map((certificate) => (
-              <CertificateCard
-                key={certificate.title}
-                certificate={certificate}
-              />
-            ))}
-          </StaggerGroup>
-
-          {hiddenCertificates.length > 0 ? (
-            <details className="mt-6">
-              <summary className="certificate-summary soft-shine mx-auto flex w-fit cursor-pointer items-center justify-center bg-[#111111] px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#7a5b12]">
-                Lihat lebih banyak
-              </summary>
-              <StaggerGroup className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {hiddenCertificates.map((certificate) => (
-                  <CertificateCard
-                    key={certificate.title}
-                    certificate={certificate}
-                  />
-                ))}
-              </StaggerGroup>
-            </details>
-          ) : null}
+          <CertificateGrid certificates={certificates} />
         </div>
 
       </section>
@@ -722,9 +830,11 @@ export default function Home() {
             {projects.map((project, index) => (
               <StaggerArticle
                 key={project.title}
-                className="professional-card group flex min-h-[340px] flex-col border border-black/10 bg-white p-5 shadow-sm"
+                className="professional-card group flex min-h-[500px] flex-col border border-black/10 bg-white p-4 shadow-sm"
               >
-                <div className="flex items-start justify-between gap-4">
+                <ProjectThumbnail type={project.visualType} />
+
+                <div className="mt-5 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-bold uppercase text-[#7a5b12]">
                       {project.status}
